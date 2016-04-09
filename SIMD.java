@@ -43,7 +43,7 @@ public class SIMD
 			y[no_procs+1] = f(b);
 			for(int i = 1; i<=no_procs; i++)
 			{
-				t[i-1] = new Thread( new Handler(i, a, b, s) );
+				t[i-1] = new Thread( new Handler(i, s) );
 				t[i-1].start();
 			}
 			for (int i=0; i<no_procs ; i++ )
@@ -62,24 +62,20 @@ public class SIMD
 
 			a = value[0];
 			b = value[1];
-			System.out.println(a);
-			System.out.println(b);
 		}
 		
+		System.out.println(a);
+		System.out.println(b);
 	}
 	class Handler extends Thread
 	{
 		public int index;
-		public double a;
-		public double b;
 		public double s;
 		public double curr;
 		public double prev;
-		Handler(int i, double a, double b, double s)
+		Handler(int i, double s)
 		{
 			index = i;
-			this.a = a;
-			this.b = b;
 			this.s = s;
 		}
 		public void run()
