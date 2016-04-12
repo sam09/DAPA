@@ -20,8 +20,8 @@ public class SIMD
 	}
 	public SIMD()
 	{
-		a = 0;
-		b = 100;
+		a = 20;
+		b = 30;
 		no_procs = 10;
 		c = 0.000001;
 	}
@@ -62,6 +62,9 @@ public class SIMD
 
 			a = value[0];
 			b = value[1];
+			System.out.println(s);
+			System.out.println(a);
+			System.out.println(b);
 		}
 		
 		System.out.println(a);
@@ -84,8 +87,9 @@ public class SIMD
 			prev = f(a + index*s - s);
 			if (curr * prev < 0)
 			{
+				double old_a = a;
 				a = a + (index -1 ) * s;
-				b = a + index * s;
+				b = old_a + index * s;
 			}
 			value[0] = a;
 			value[1] = b;
